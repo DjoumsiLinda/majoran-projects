@@ -1,0 +1,23 @@
+<img class="bild1" src="public/assets/bild1.png" />
+<p id="anfang">
+    This petition aims to vote a law that will allow every worker to have at
+    least one day per month to work at home. If you agree, sign this petition
+    and share this link.😃
+</p>
+{{#if error}}
+    <p id="err">Oups 😥, something went wrong! Please try again</p>
+{{/if}}
+<div class="part">
+    <form method="post">
+        <div class="registration">
+            <input type="text" name="first" placeholder="First Name*" />
+            <input type="text" name="last" placeholder="Last Name*" />
+            <input type="text" name="email" placeholder="Email Adresse*" />
+            <input type="password" name="password" placeholder="Password*" />
+            <button type="submit" id="submit">Sign Up</button>
+        </div>
+    </form>
+    <p id="right">If you are already the member, please
+        <a href="/login">log in</a>
+    </p>
+</div>

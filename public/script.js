@@ -49,7 +49,4 @@
         inputField.val(canvas.toDataURL());
         //console.log(inputField.val());
     }
-    /* module.exports.signature = function signature() {
-        return inputField.val();
-    };*/
 })();
