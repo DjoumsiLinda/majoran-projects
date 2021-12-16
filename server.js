@@ -57,6 +57,7 @@ server.get("/", (request, response) => {
     response.redirect("/register");
 });
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ register
 server.get("/register", (request, response) => {
     response.render("registration");
 });
@@ -69,7 +70,7 @@ server.post("/register", (request, response) => {
         db.addUsers(first, last, email, digest)
             .then((result) => {
                 request.session.userId = result.rows[0].id;
-                response.redirect("/petition");
+                response.redirect("/profile");
             })
             .catch((err) => {
                 console.log(err);
@@ -79,6 +80,8 @@ server.post("/register", (request, response) => {
             });
     });
 });
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ login
 server.get("/login", (request, response) => {
     response.render("login");
 });
@@ -118,6 +121,83 @@ server.post("/login", (request, response) => {
         });
 });
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ profile
+server.get("/profile", (request, response) => {
+    if (!request.session.userId) {
+        return response.redirect("/register");
+    }
+    response.render("profile");
+});
+
+server.post("/profile", (request, response) => {
+    // console.log(request.body);
+    if (!request.session.userId) {
+        response.redirect("/register");
+    }
+    let { age, city, homepage } = request.body;
+    checkProfile(homepage, age, response, "profile");
+    if (city || homepage) {
+        //console.log(age, city, homepage);
+        db.addUserProfiles(age, city, homepage, request.session.userId)
+            .then((result) => {
+                console.log("Insert Profile succefull");
+                response.redirect("/petition");
+            })
+            .catch((err) => {
+                console.log(err);
+                response.render("profile", {
+                    error: true,
+                });
+            });
+    } else {
+        console.log("Not set Profile");
+        response.redirect("/petition");
+    }
+});
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ profile/edit
+server.get("/profile/edit", (request, response) => {
+    if (!request.session.userId) {
+        return response.redirect("/register");
+    }
+    db.getUsers_profile(request.session.userId)
+        .then((result) => {
+            const { rows: signers } = result;
+            //console.log("Signers:", signers);
+            const profile = signers[0];
+            //console.log("Signers:", first, last, age, city);
+            response.render("profile_edit", {
+                profile,
+            });
+        })
+        .catch((err) => {
+            console.log("DB", err);
+            response.sendStatus(500); // Internal Server Error
+        });
+});
+
+server.post("/profile/edit", (request, response) => {
+    console.log("Update+++++++++++++++ ", request.session.userId);
+    console.log("Update+++++++++++++++ ", request.body);
+    const { homepage, age } = request.body;
+    db.getUsers_profile(request.session.userId)
+        .then((result) => {
+            const { rows: signers } = result;
+            console.log("Signers:", signers, signers[0].first);
+            checkProfile(
+                homepage,
+                age,
+                response,
+                "profile_edit",
+                signers[0].first
+            );
+        })
+        .catch((err) => {
+            console.log("DB", err);
+            response.sendStatus(500); // Internal Server Error
+        });
+    //checkPassword(password);
+});
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ petition
 server.get("/petition", (request, response) => {
     if (!request.session.userId) {
         response.redirect("/register");
@@ -144,6 +224,7 @@ server.post("/petition", (request, response) => {
     const { signature } = request.body;
     db.addSignatures(signature, request.session.userId)
         .then((result) => {
+            request.session.signatureId = result.rows[0].id;
             response.redirect("/thanks");
         })
         .catch((err) => {
@@ -154,6 +235,7 @@ server.post("/petition", (request, response) => {
         });
 });
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ thanks
 server.get("/thanks", (request, response) => {
     if (!request.session.userId) {
         console.log("GET /thanks --- kein cookies");
@@ -163,6 +245,7 @@ server.get("/thanks", (request, response) => {
         .then((result) => {
             db.getSignaturesWithId(request.session.userId)
                 .then((resultsignature) => {
+                    //console.log(request.session.signatureId, resultsignature);
                     response.render("thanks", {
                         count: result.rows[0].count,
                         image: resultsignature.rows[0].signature,
@@ -179,9 +262,10 @@ server.get("/thanks", (request, response) => {
         });
 });
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ signers
 server.get("/signers", (request, response) => {
     //console.log("GET /signers");
-    if (!request.session.userId) {
+    if (!request.session.userId && !request.session.signatureId) {
         console.log("GET /signers  --- kein cookies");
         return response.redirect("/register");
     }
@@ -189,7 +273,30 @@ server.get("/signers", (request, response) => {
     db.getUsers()
         .then((result) => {
             const { rows: signers } = result;
+            console.log("Signers:", signers);
             response.render("signers", { signers, count: result.rows.length });
+        })
+        .catch((err) => {
+            console.log(err);
+            response.sendStatus(500); // Internal Server Error
+        });
+});
+
+server.get("/signers/:name", (request, response) => {
+    if (!request.session.userId && !request.session.signatureId) {
+        console.log("GET /signers  --- kein cookies");
+        return response.redirect("/register");
+    }
+    //console.log("Get Elements in DB nach city:", request.params.name);
+    db.getUsersNachCity(request.params.name)
+        .then((result) => {
+            const { rows: signers } = result;
+            //console.log("Signers:", signers);
+            response.render("signersCity", {
+                signers,
+                count: result.rows.length,
+                city: request.params.name,
+            });
         })
         .catch((err) => {
             console.log(err);
@@ -200,3 +307,39 @@ server.get("/signers", (request, response) => {
 server.listen("4000", () => {
     console.log("listening on http://localhost:4000");
 });
+
+function checkProfile(homepage, age, response, handlebars, signers) {
+    console.log(age, homepage, signers);
+    if (
+        isNaN(age) &&
+        !homepage.toLowerCase().startsWith("https://") &&
+        !homepage.toLowerCase().startsWith("http://")
+    ) {
+        response.render(handlebars, {
+            signers,
+            nichtgueltigNaN: true,
+            nichtgueltigHomepage: true,
+        });
+    } else {
+        if (age === "") {
+            age = null;
+        } else {
+            age = Number(age);
+            if (isNaN(age)) {
+                response.render(handlebars, { signers, nichtgueltigNaN: true });
+            } else {
+                if (
+                    !homepage.toLowerCase().startsWith("http://") &&
+                    !homepage.toLowerCase().startsWith("https://")
+                ) {
+                    response.render(handlebars, {
+                        signers,
+                        nichtgueltigHomepage: true,
+                    });
+                } else {
+                    return;
+                }
+            }
+        }
+    }
+}

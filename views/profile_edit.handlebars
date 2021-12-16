@@ -1,0 +1,26 @@
+<img class="bild1" src="../public/assets/bild1.png" />
+{{#if error}}
+    <p id="err">Oups 😥, something went wrong! Please try again</p>
+{{/if}}
+<div class="part">
+    <form method="post">
+        <div class="registration">
+            <p>Edit your profile</p>
+            <input type="text" name="first" value="{{profile.first}}" />
+            <input type="text" name="last" value="{{profile.last}}" />
+            <input type="text" name="email" value="{{profile.email}}" />
+            <input type="password" name="password" value="" />
+            <input type="text" name="age" value="{{profile.age}}" />
+            {{#if nichtgueltigNaN}}
+                <p class="er">no valid age</p>
+            {{/if}}
+            <input type="text" name="city" value="{{profile.city}}" />
+            <input type="text" name="homepage" value="{{profile.url}}" />
+            {{#if nichtgueltigHomepage}}
+                <p class="er">no valid homepage</p>
+            {{/if}}
+
+            <button type="submit" id="submit">Update</button>
+        </div>
+    </form>
+</div>

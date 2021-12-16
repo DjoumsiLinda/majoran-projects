@@ -1,0 +1,20 @@
+<img class="profile-image" src="public/assets/bild2.png" />
+
+<form method="post">
+    <div class="profile">
+        <p>Please tell us just a little about yourself</p>
+        {{#if error}}
+            <p class="er">Oups 😥, something went wrong! Please try again</p>
+        {{/if}}
+        <input type="text" name="age" placeholder="Age" />
+        {{#if nichtgueltigNaN}}
+            <p class="er">no valid age</p>
+        {{/if}}
+        <input type="text" name="city" placeholder="City" />
+        <input type="text" name="homepage" placeholder="Homepage" />
+        {{#if nichtgueltigHomepage}}
+            <p class="er">no valid homepage</p>
+        {{/if}}
+        <button type="submit" id="submit">continue</button>
+    </div>
+</form>

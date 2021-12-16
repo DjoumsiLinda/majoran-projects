@@ -3,8 +3,11 @@
 -- Whenever we change the sql file,
 -- we need to run the psql command above again!
 
+--https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/
+DROP TABLE IF EXISTS user_profiles;
 DROP TABLE IF EXISTS signatures;
 DROP TABLE IF EXISTS users;
+
 
 
 CREATE TABLE users(
@@ -23,3 +26,11 @@ CREATE TABLE signatures(
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+CREATE TABLE user_profiles(
+    id SERIAL PRIMARY KEY,
+    age INT,
+    city TEXT,
+    url TEXT,
+    user_id INT REFERENCES users(id) NOT NULL UNIQUE -- unique means each user can only have 1 row
+);
