@@ -2,7 +2,12 @@ const path = require("path");
 const express = require("express");
 const { engine } = require("express-handlebars");
 const cookieSession = require("cookie-session");
-const { sessionSecret } = require("./secrets.json");
+
+//heroku
+let sessionSecret = process.env.SESSION_SECRET;
+if (!sessionSecret) {
+    sessionSecret = require("./secrets.json").sessionSecret;
+}
 const bcrypt = require("bcryptjs");
 const db = require("./db.js");
 
@@ -304,7 +309,7 @@ server.get("/signers/:name", (request, response) => {
         });
 });
 
-server.listen("4000", () => {
+server.listen(process.env.PORT || 4000, () => {
     console.log("listening on http://localhost:4000");
 });
 

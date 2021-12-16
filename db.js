@@ -1,6 +1,10 @@
 const spicedPg = require("spiced-pg");
 
-const { connetionString } = require("./secrets.json");
+//heroku
+let connetionString = process.env.DATABASE_URL;
+if (!connetionString) {
+    connetionString = require("./secrets.json").connetionString;
+}
 
 const db = spicedPg(connetionString);
 
