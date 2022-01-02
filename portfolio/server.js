@@ -79,5 +79,5 @@ if (require.main === module) {
     });
 }
 //https://dashboard.heroku.com/apps/einfuegen/settings
-// git remote add heroku https://git.heroku.com/einfuegen.git
-//
+// git remote add heroku https://git.heroku.com/einfuegenprojects.git
+// git remote rm heroku
