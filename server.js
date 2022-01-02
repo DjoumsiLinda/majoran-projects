@@ -96,4 +96,5 @@ if (require.main === module) {
 module.exports = server;
 
 //https://dashboard.heroku.com/apps/einfuegen/settings
-//https://git.heroku.com/einfuegen.git
+//https://einfuegen.herokuapp.com/register
+// git remote add heroku https://git.heroku.com/einfuegen.git

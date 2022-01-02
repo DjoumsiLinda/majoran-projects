@@ -12,7 +12,7 @@
     document.querySelector("#overlay").addEventListener("click", function () {
         overlay.classList.remove("on");
     });
-    document.querySelector("#left").addEventListener("click", function () {
+    document.querySelector("#lef").addEventListener("click", function () {
         overlay.classList.remove("on");
     });
 })();
