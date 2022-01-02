@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+body,
+input {
+    font-family: "Helvetica";
+}
+
+#results {
+    visibility: hidden;
+    border: 2px solid black;
+}
+#container {
+    display: inline-block;
+}
+.highlight {
+    background-color: gray;
+    color: blue;
+}

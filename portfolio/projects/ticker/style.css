@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden; /* Hide horizontal scrollbar ==> Masquer la barre de défilement horizontale  */
+}
+
+#ticker {
+    white-space: nowrap; /* prevents line breaks */
+
+    /*Commence par la gauche et devra etre 100%*/
+    left: 100%;
+    position: absolute;
+    border-bottom: 2px solid black;
+
+    font-size: 0; /* removes the arbitrary spacing betweend inline-block elements */
+}
+
+#ticker a {
+    text-decoration: none; /*enleve le souligne le Text*/
+    color: black;
+
+    /* spacing between the links */
+    /* margin would also work, but would make the calculations
+    in JS more complicated */
+    padding: 5px 12px;
+
+    /* set max width for each headline */
+    display: inline-block;
+    max-width: 400px;
+    overflow: hidden; /*pr eviter que les lignes soient jumele ou entrecroise*/
+    text-overflow: ellipsis; /*permet dajouter ... a chaque elements*/
+    /*font size a fixer car il a ete mit a 0 au parent */
+    font-size: 18px;
+}
+
+/* removes the arbitrary spacing betweend inline elements */
+#ticker a:after {
+    content: " ";
+}
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Unterer Teil*/
+.unten {
+    white-space: nowrap; /* prevents line breaks */
+
+    /*Commence par la gauche et devra etre 100%*/
+    right: 0;
+    position: absolute;
+    top: 95%;
+    border-top: 2px solid black;
+
+    font-size: 0; /* removes the arbitrary spacing betweend inline-block elements */
+}
+
+.unten a {
+    text-decoration: none; /*enleve le souligne le Text*/
+    color: black;
+
+    /* spacing between the links */
+    /* margin would also work, but would make the calculations
+    in JS more complicated */
+    padding: 5px 12px;
+
+    /* set max width for each headline */
+    display: inline-block;
+    max-width: 400px;
+    overflow: hidden; /*pr eviter que les lignes soient jumele ou entrecroise*/
+    text-overflow: ellipsis; /*permet dajouter ... a chaque elements*/
+    /*font size a fixer car il a ete mit a 0 au parent */
+    font-size: 18px;
+}

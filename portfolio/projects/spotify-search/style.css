@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 5px;
+}
+body {
+    background-color: grey;
+}
+.entetes {
+    font-size: 30px;
+    font-weight: bold;
+    left: 20%;
+}
+
+#more {
+    display: none;
+}
+#results a {
+    display: flex;
+}
+#results p {
+    height: 50px;
+    transform: translate(0%, 100%);
+}
+#results img {
+    width: 150px;
+    height: 150px;
+}
+#search,
+#more {
+    background-color: chartreuse;
+}

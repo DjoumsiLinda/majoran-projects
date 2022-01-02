@@ -1,0 +1,18 @@
+<head>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<p>Here are my {{projects.length}} Projects.</p>
+<div class="contains">
+    <div class="projects">
+        {{#each projects}}
+            <article>
+                <a href="/projects/{{directory}}"><img
+                        src="{{screenshot}}"
+                    /></a>
+                <p>
+                    <a href="/projects/{{directory}}">{{title}}</a>
+                </p>
+            </article>
+        {{/each}}
+    </div>
+</div>

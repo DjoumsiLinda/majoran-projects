@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="checker">
+        <div class="holeChecker"></div>   
+    </div>
+    <div id="board">
+        <div class="column"></div>
+        <div id="player">
+            <button class="buttonReset">Reset</button>
+            <p id="player-1">Player-1</p>
+            <p id="player-2">Player-2</p>
+        </div>    
+    </div>
+    <div class="test">   
+        <div  id="victory">
+            <p>Gewinen!</p>
+            <button id="play">Spielen</button>
+            <button id="ergebnis">Ergebnis</button>
+            <!-- <button id="ende">Beenden</button>-->
+        </div>
+    </div>
+    <div class="testWillkommen">
+        <div class="willkommen">
+            <p>Wilkommen in Connect Four!</p>
+            <p>Viel Spass beim Spiel😊</p>
+        </div>  
+        <div class="echec">
+            <p>😮Max columns/rows ist 9!</p>
+        </div>   
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

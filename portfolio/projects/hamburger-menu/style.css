@@ -1,0 +1,267 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+header {
+    padding: 30px;
+    background-color: white;
+    position: relative;
+}
+.logo {
+    height: 30px;
+    position: absolute;
+    left: 30px;
+    top: 10px;
+}
+
+.hamburgermenu {
+    height: 35px;
+    width: 30px;
+    position: absolute;
+    right: 40px;
+    top: 10px;
+}
+
+.hero {
+    position: relative; /* car le h2 doit etre absolu*/
+}
+
+.hero img {
+    width: 100%;
+    height: 70vh; /* view height => prend automatiquement X% du Bilschirm */
+
+    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Bild Anpassung*/
+    /*Wie das Bild Verhalten sollte bei unterschieliche Browser*/
+    object-fit: cover; /* covers the complete area & keeps aspect ratio */
+    /*Lorsquon a faire a a des Bildschrim tres grd, on devra fixe quelle parti de limege devra etre vu*/
+    /* object-position: top left; => dis en faite que lorsque le Bildschirm est grd tu prend le haut de limage.*/
+    /*changement du contrast/effet/couleur de limage*/
+    filter: brightness(0.8); /* increases contrast to white text */
+}
+
+.hero h1 {
+    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Text Centrieren*/
+    font-size: 40px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    transform: translate(-25%, 100%);
+    color: white;
+}
+.start {
+    width: 240px;
+    height: 40px;
+    font-size: 30px;
+    border-radius: 50px;
+    background-color: gold;
+    text-align: center;
+    color: chocolate;
+    border: 3px solid chocolate;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%);
+}
+main {
+    font-size: 0;
+}
+.newSection {
+    font-size: 0;
+    top: 0;
+}
+
+.newSection article {
+    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Blöcke Anpaasung*/
+    height: 250px;
+    width: 50%;
+    background-color: brown;
+    display: inline-block; /*les block saligne sur chaque ligne horizontalement jusqua ce wui est plus de la place*/
+}
+article {
+    position: relative;
+    top: 0;
+}
+article img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+}
+.text {
+    width: 65%;
+    color: black;
+    position: absolute;
+    left: 100px;
+    top: 10px;
+    font-size: 30px;
+}
+.footerSection {
+    width: 100%;
+    height: 40px;
+    background-color: maroon;
+    position: absolute;
+}
+#foter {
+    color: white;
+    position: absolute;
+    left: 40px;
+    top: 10px;
+}
+
+@media screen and (width: 1024px) {
+    .hero h1 {
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Text Centrieren*/
+        font-size: 30px;
+        position: absolute;
+        top: 25%;
+        left: 40%;
+        transform: translate(-25%, 100%);
+        color: white;
+    }
+
+    .start {
+        width: 180px;
+        height: 40px;
+        font-size: 25px;
+        border-radius: 50px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /*screen==sur tout les Browser ==> sur tt les browser donc le max-width est 767px. faire les instrutions svt*/
+    .logo {
+        left: 5px;
+        top: 15px;
+    }
+
+    .hamburgermenu {
+        right: 5px;
+        top: 15px;
+    }
+
+    .newSection article {
+        width: 100%; /*le breite de chaque block quitte de 50% a 100%*/
+        display: block; /*les block saligne verticalement*/
+    }
+
+    .hero h1 {
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Text Centrieren*/
+        font-size: 30px;
+        position: absolute;
+        top: 25%;
+        left: 40%;
+        transform: translate(-25%, 100%);
+        color: white;
+    }
+
+    .start {
+        width: 180px;
+        height: 40px;
+        font-size: 25px;
+        border-radius: 50px;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .text {
+        font-size: 24px;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    .newSection article {
+        background-color: black;
+        animation-duration: 2s;
+    }
+    .hero img {
+        filter: brightness(0.2);
+    }
+
+    header,
+    .start,
+    .footerSection {
+        background-color: black;
+    }
+
+    h1,
+    h2 {
+        color: white;
+    }
+    .text {
+        color: white;
+    }
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Hambuger menu*/
+#overlay {
+    /*position fixed car le overlay cad le menu doit etre sur une parti fixe de lecran*/
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /*rgba(red, green, blue, alpha)*/
+    background-color: rgba(0, 0, 0, 0);
+
+    /* we work with visibility: hidden,
+    because display: none cannot be animated / transitioned.*/
+    visibility: hidden;
+    /*transition est coe une annimation et il est possible de mettre le temps de reaction a un evenement*/
+    transition: all 2s;
+}
+
+#overlay.on {
+    /*Lorsque la class on est active(voir le script.js) un menu apparait(visibility: visible) et on change/noircir larriere planbackground-color: rgba(0, 0, 0, 0.7)*/
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#menu {
+    background-color: white;
+    height: 100%;
+    width: 50%;
+    /*important de preciser le min et max de width pour que celui cici soit operationel sur tt type de Bowser*/
+    min-width: 150px;
+    max-width: 300px;
+
+    position: absolute;
+    right: 0;
+
+    transition: all 2s;
+
+    /*translateX() repositionne un élément horizontalement sur le plan 2D*/
+    transform: translateX(100%);
+}
+
+.btnX {
+    position: absolute;
+    left: 90%;
+    font-size: 20px;
+    background-color: white;
+    border: 0px;
+}
+#menu a {
+    display: block;
+    text-decoration: dotted red;
+    font-size: 30px;
+    font-weight: bold;
+    color: blue;
+    /*car on a utiliser display block*/
+    padding: 10px 20px;
+}
+
+#menu .log {
+    top: 50px;
+    font-size: 20px;
+}
+#overlay.on #menu {
+    /*translateX() repositionne un élément horizontalement sur le plan 2D*/
+    transform: translateX(0);
+}
