@@ -1,0 +1,70 @@
+.deleteSignature img {
+    border: 1px solid black;
+    background-color: white;
+}
+#links label {
+    margin-left: 45%;
+}
+.deleteSignature #but {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.deleteSignature {
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+}
+.delete {
+    width: 100%;
+    height: 100%;
+    filter: brightness(40%);
+    position: absolute;
+    z-index: -1;
+}
+.bild2 img {
+    width: 100%;
+    height: 120%;
+    margin-left: 5%;
+    margin-top: -5%;
+}
+.contains {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+}
+.contains .updateP {
+    margin-top: -20%;
+    text-align: center;
+}
+.contains .updateim {
+    margin-top: 15%;
+    margin-left: 70px;
+}
+.deleteAccount {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#left {
+    margin-right: 30%;
+}
+input {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+label p {
+    margin-bottom: -2px;
+    margin-top: -10px;
+    color: rgb(251, 255, 0);
+    font-size: 15px;
+    text-align: center;
+}
+canvas {
+    background-color: rgb(255, 187, 0);
+    border: 1px dashed white;
+    margin-top: -20%;
+    margin-bottom: 0;
+}

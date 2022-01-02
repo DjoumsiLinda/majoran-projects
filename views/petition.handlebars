@@ -4,17 +4,32 @@
     aims to vote a law that will allow every worker to have at least one day per
     month to work at home. If you agree, sign this petition and share this link.
 </p>
+<head>
+    <link rel="stylesheet" href="/public/thanks.css" />
+</head>
 <form method="post">
     <div class="petition">
-        <div id="signature">
-            <canvas id="canvas" width="520" height="120"></canvas>
-            <p>Sign Here</p>
-        </div>
-        <form method="get">
-            <div class="imageCanvas">
-                <input type="hidden" name="signature" />
+        <div id="lef">
+            <div id="signature">
+                <canvas id="canvas" width="520" height="120"></canvas>
+                <p>Sign Here</p>
             </div>
-        </form>
-        <button type="submit" id="submit">Submit</button>
+            <form method="get">
+                <div class="imageCanvas">
+                    <input type="hidden" name="signature" />
+                </div>
+            </form>
+            <button type="submit" id="submit">Submit</button>
+
+        </div>
+        <div id="right">
+            <img id="menu" src="public/assets/menu.svg" />
+            <div id="overlay">
+                <a href="/profile/edit">Edit your profile</a>
+                <a href="/petition/delete/account">Delete your account</a>
+                <a href="/petition/logout">Log out</a>
+            </div>
+        </div>
     </div>
+
 </form>

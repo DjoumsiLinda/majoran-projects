@@ -1,14 +1,28 @@
-<div class="part">
-    <div id="signers">
+<head>
+    <link rel="stylesheet" href="../public/signers.css" />
+</head>
+<img class="bild1" src="../public/assets/bild2.png" />
+<div id="contains">
+    <div id="left">
         <p>There are {{count}} Signers in {{city}}</p>
         {{#each signers}}
             <li>{{first}}
                 {{last}}
                 {{age}}
-                <a href="/signers/{{city}}">{{city}}</a></li>
+                {{city}}
         {{/each}}
+
     </div>
-    <div class="bild2">
-        <img src="../public/assets/bild2.png" />
+    <div id="right">
+        <img id="menu" src="../public/assets/menu.svg" />
+        <div id="overlay">
+            <a href="/signers">See all {{count}} Signers</a>
+            <a href="/profile/edit">Edit your profile</a>
+            <a href="/petition/delete/signature">Delete your signature</a>
+            <a href="/petition/delete/account">Delete your account</a>
+        </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../public/canvas.js"></script>
+<script src="../public/menu.js"></script>

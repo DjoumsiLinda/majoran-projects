@@ -1,0 +1,29 @@
+<head>
+    <link rel="stylesheet" href="/public/delete.css" />
+</head>
+<img class="delete" src="/public/assets/bild1.png" />
+
+<form method="post">
+    <p>Are you sure to delete your account?</p>
+    <div class="deleteAccount">
+        <div id="left">
+            <input type="text" value="{{profile.first}}" />
+            <label><p>First Name</p></label>
+            <input type="text" value="{{profile.last}}" />
+            <label><p>Last Name</p></label>
+            <input type="text" value="{{profile.email}}" />
+            <label><p>Email Adress</p></label>
+            <input type="password" placeholder="password" />
+            <label><p>Password</p></label>
+            <input type="text" value="{{profile.age}}" />
+            <label><p>Age</p></label>
+            <input type="text" value="{{profile.city}}" />
+            <label><p>City</p></label>
+            <input type="text" value="{{profile.url}}" />
+            <label><p>Homepage</p></label>
+        </div>
+        <div>
+            {{> deleteUrl image=image}}
+        </div>
+    </div>
+</form>

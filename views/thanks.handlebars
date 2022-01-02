@@ -1,12 +1,20 @@
-<div class="part">
-    <div id="thanks">
-        <p>Thanks for your petition!😀😀</p>
-        <img src="{{image}}" />
-        <a href="/signers">See all {{count}} Signers</a>
-        <a href="/profile/edit">Edit your profile</a>
-        <a href="/petition/delete">Delete your signature</a>
+<head>
+    <link rel="stylesheet" href="/public/thanks.css" />
+</head>
+<img class="bild1" src="public/assets/bild2.png" />
+<div id="thanks">
+    <div id="left">
+        <p>Thanks for your petition!</p>
+        <img src="{{signature}}" />
     </div>
-    <div class="bild2">
-        <img src="public/assets/bild2.png" />
+    <div id="right">
+        <img id="menu" src="public/assets/menu.svg" />
+        <div id="overlay">
+            <a href="/signers">See all {{count}} Signers</a>
+            <a href="/profile/edit">Edit your profile</a>
+            <a href="/petition/delete/signature">Delete your signature</a>
+            <a href="/petition/delete/account">Delete your account</a>
+            <a href="/petition/logout">Log out</a>
+        </div>
     </div>
 </div>

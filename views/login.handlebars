@@ -2,7 +2,7 @@
 <p id="anfang">
     This petition aims to vote a law that will allow every worker to have at
     least one day per month to work at home. If you agree, sign this petition
-    and share this link.😃
+    and share this link.
 </p>
 {{#if error}}
     <p id="err">Something went wrong! Please try again.</p>
@@ -10,8 +10,24 @@
 <div class="part">
     <form method="post">
         <div class="login">
-            <input type="text" name="email" placeholder="Email Adresse*" />
-            <input type="password" name="password" placeholder="Password*" />
+            <input
+                type="text"
+                name="email"
+                placeholder="Email Adresse*"
+                pattern=".{7,}"
+                required="required"
+                title="7 characters minimum"
+            />
+            {{#if nichtgueltigEmail}}
+                <p class="er">no valid email</p>
+            {{/if}}
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password*"
+                required="required"
+            />
             <button type="submit" id="submit">Log In</button>
         </div>
     </form>

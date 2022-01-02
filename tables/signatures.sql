@@ -1,4 +1,6 @@
 -- createdb petition
+-- sudo service postgresql start
+-- heroku pg:psql -f tables/signatures.sql
 -- psql -d petition -f tables/signatures.sql
 -- Whenever we change the sql file,
 -- we need to run the psql command above again!
