@@ -76,5 +76,8 @@ app.get("/projects/:name", (request, response) => {
 if (require.main === module) {
     app.listen(process.env.PORT || 3700, () => {
         console.log("Server is gestartet 😀");
-    };
+    });
 }
+//https://dashboard.heroku.com/apps/einfuegen/settings
+// git remote add heroku https://git.heroku.com/einfuegen.git
+//
