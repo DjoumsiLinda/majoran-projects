@@ -1,1 +1,1 @@
-web: node portfolio/server.js
+web: node server.js
