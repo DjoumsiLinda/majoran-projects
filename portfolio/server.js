@@ -74,7 +74,7 @@ app.get("/projects/:name", (request, response) => {
 });
 
 if (require.main === module) {
-    app.listen(process.env.PORT || 3700, () => {
+    app.listen(process.env.PORT || 3800, () => {
         console.log("Server is gestartet 😀");
     });
 }
