@@ -4,14 +4,14 @@
 <div id="decription">
     <div class="allProject">
         <h1 id="pr">My Projects</h1>
-        {{#each list}}
+        {{#each text}}
             {{> projlist text=.}}
         {{/each}}
     </div>
     <div class="aktuelProject">
         <h1>{{title}}</h1>
         <img src="{{img}}" alt="">
-        <p><a href="/{{link}}">launch</a></p> <!-- <p>{{decription}}</p>  --> 
+        <p><a href="{{link}}">launch</a></p> <!-- <p>{{decription}}</p>  --> 
     </div>
 </div>
 

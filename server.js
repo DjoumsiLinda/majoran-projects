@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, "/projects")));
 app.get("/", (request, response) => {
     response.redirect("/projects");
 });
+
 app.get("/projects", (request, response) => {
     response.render("projects", {
         projects,
@@ -49,10 +50,13 @@ app.get("/projects", (request, response) => {
 });
 app.get("/projects/:name", (request, response) => {
     const list = [];
-    const project = request.params.name;
+    const project = request.url;
     let index;
+    let name = [];
+
     for (var o = 0; o < projects.length; o++) {
         list.push(projects[o].directory);
+        name.push(projects[o].name);
         if (projects[o].directory === project) {
             index = o;
         }
@@ -63,21 +67,19 @@ app.get("/projects/:name", (request, response) => {
         console.log("fehler");
         return response.sendStatus(404);
     }
-
     return response.render("description", {
-        list,
+        text: name,
         title: projects[index].title,
         img: projects[index].screenshot,
         decription: projects[index].description,
-        link: projects[index].directory,
+        link: projects[index].link,
     });
 });
 
-if (require.main === module) {
-    app.listen(process.env.PORT || 3800, () => {
-        console.log("Server is gestartet 😀");
-    });
-}
-//https://dashboard.heroku.com/apps/einfuegen/settings
-// git remote add heroku https://git.heroku.com/einfuegenprojects.git
-// git remote rm heroku
+app.listen(process.env.PORT || 3900, () =>
+    console.log("Server is gestartet 😀")
+);
+
+//git remote rm heroku
+//git remote add heroku https://git.heroku.com/einfuegenprojects.git
+//git push heroku HEAD:master

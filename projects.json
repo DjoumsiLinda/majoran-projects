@@ -1,0 +1,66 @@
+[
+    {
+        "title": "Kitty Carousel",
+        "directory": "/projects/kitty-carousel/",
+        "link": "/kitty-carousel",
+        "name": "kitty-carousel",
+        "screenshot": "/screenshots/kitty_carousel.jpeg",
+        "description": "Kitty-Carousel"
+    },
+    {
+        "title": "Connect Four",
+        "directory": "/projects/connect-four/",
+        "link": "/connect-four",
+        "name": "connect-four",
+        "screenshot": "/screenshots/connect_four.jpeg",
+        "description": "Connect-Four"
+    },
+    {
+        "title": "Panes",
+        "directory": "/projects/panes/",
+        "link": "/panes",
+        "name": "panes",
+        "screenshot": "/screenshots/panes.jpeg",
+        "description": "Panes"
+    },
+    {
+        "title": "Incremental Search",
+        "directory": "/projects/incremental-search/",
+        "link": "/incremental-search",
+        "name": "incremental-search",
+        "screenshot": "/screenshots/incremental_search.jpeg",
+        "description": "Incremental-Search"
+    },
+    {
+        "title": "Spotify Search",
+        "directory": "/projects/spotify-search/",
+        "link": "/spotify-search",
+        "name": "spotify-search",
+        "screenshot": "/screenshots/spotify_search.jpeg",
+        "description": "Spotify-Search"
+    },
+    {
+        "title": "Stick-Figure",
+        "directory": "/projects/stick-figure/",
+        "link": "/stick-figure",
+        "name": "stick-figure",
+        "screenshot": "/screenshots/stick_figure.jpeg",
+        "description": "Stick-Figure"
+    },
+    {
+        "title": "Ticker",
+        "directory": "/projects/ticker/",
+        "link": "/ticker",
+        "name": "ticker",
+        "screenshot": "/screenshots/ticker.jpeg",
+        "description": "Ticker"
+    },
+    {
+        "title": "Hamburger Menu",
+        "directory": "/projects/hamburger-menu/",
+        "link": "/hamburger-menu",
+        "name": "hamburger-menu",
+        "screenshot": "/screenshots/hamburger_menu.jpeg",
+        "description": "Hamburger-Menu"
+    }
+]
