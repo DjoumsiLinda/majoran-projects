@@ -66,11 +66,40 @@ li {
 }
 footer {
     background-color: violet;
-    height: 80px;
+    height: 15vh;
     margin-top: 100px;
 }
 #footerText {
-    position: relative;
-    top: 12px;
-    left: 7px;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    min-height: 15vh;
+    grid-gap: 5px;
+    padding-top: 20px;
+}
+#footer_left {
+    grid-column: 1 / 2;
+    grid-row: 1/-1;
+    display: flex;
+    margin-left: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#footer_center {
+    grid-column: 2 / 3;
+    grid-row: 1/-1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: -20px;
+}
+#footer_right {
+    margin-right: 5px;
+    grid-column: 3 / 4;
+    grid-row: 1/-1;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

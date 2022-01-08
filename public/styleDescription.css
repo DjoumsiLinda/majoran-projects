@@ -1,6 +1,5 @@
 body {
     height: 100vh;
-    overflow-y: hidden;
 }
 #decription {
     display: flex;
@@ -51,7 +50,5 @@ body {
 }
 
 footer {
-    margin-top: 120px;
-    right: 0px;
-    bottom: 0px;
+    margin-top: 85px;
 }
